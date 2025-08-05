@@ -1,6 +1,4 @@
-# Data Engineering Analysis Desktop App
-
-A privacy-first desktop application for comprehensive data engineering analysis using lightweight AI models.
+# ETLex
 
 ## Features
 
