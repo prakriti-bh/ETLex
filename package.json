@@ -1,0 +1,24 @@
+{
+  "name": "data-engineering-analyzer",
+  "version": "1.0.0",
+  "description": "Privacy-first data engineering analysis with LLM integration",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc && webpack",
+    "dev": "electron dist/main.js",
+    "start": "npm run build && npm run dev",
+    "rust-build": "cd rust-core && cargo build --release",
+    "python-setup": "cd python-services && pip install -r requirements.txt"
+  },
+  "dependencies": {
+    "electron": "^27.0.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "webpack": "^5.0.0",
+    "sqlite3": "^5.1.6",
+    "chroma-js": "^2.4.2",
+    "graphviz": "^0.0.9",
+    "pdf-parse": "^1.1.1",
+    "mammoth": "^1.6.0"
+  }
+}

@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  llm-service:
+    image: ollama/ollama:latest
+    ports:
+      - "8080:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+    command: >
+      sh -c "ollama serve &
+             sleep 10 &&
+             ollama pull codellama:7b-instruct &&
+             wait"
+    
+  privacy-proxy:
+    build:
+      context: ./privacy-proxy
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    depends_on:
+      - llm-service
+    environment:
+      - LLM_ENDPOINT=http://llm-service:11434
+
+volumes:
+  ollama_data:
